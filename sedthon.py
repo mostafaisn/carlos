@@ -200,7 +200,7 @@ async def _(event):
     time_name.append("off")
     await sedthon(
         functions.account.UpdateProfileRequest(
-            first_name=" - @BHthon"
+            first_name=" - @TBthon"
         )
     )
 
@@ -240,7 +240,7 @@ async def _(event):
     time_bio.append("off")
     await sedthon(
         functions.account.UpdateProfileRequest(
-            about="𝐖𝐄 𝐀𝐑𝐄 𝐓𝐇𝐄 𝐎𝐑𝐈𝐆𝐈𝐍𝐀𝑳 𝐀𝐍𝐃 𝐖𝐈𝑳𝑳 𝐍𝐎𝐓 𝐂𝐀𝐑𝐄 f𝐎𝐑 𝐓𝐇𝐄 𝐇𝐎𝐒𝐓𝐈𝑳𝐄𝐒  -  @BHthon"
+            about="𝐖𝐄 𝐀𝐑𝐄 𝐓𝐇𝐄 𝐎𝐑𝐈𝐆𝐈𝐍𝐀𝑳 𝐀𝐍𝐃 𝐖𝐈𝑳𝑳 𝐍𝐎𝐓 𝐂𝐀𝐑𝐄 f𝐎𝐑 𝐓𝐇𝐄 𝐇𝐎𝐒𝐓𝐈𝑳𝐄𝐒  -  @TBthon"
         )
     )
 
@@ -591,9 +591,9 @@ async def _(event):
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(f'''
-𝐰𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐜𝐡𝐞𝐜𝐤𝐞𝐫 𝐬𝐨𝐮𝐫𝐜𝐞 𝐛𝐡𝐭𝐡𝐨𝐧
-𝐝𝐞𝐯 : @myAbnBashar 
-𝐜𝐡𝐚𝐧𝐧𝐞𝐥 : @bhthon
+𝐰𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐜𝐡𝐞𝐜𝐤𝐞𝐫 𝐬𝐨𝐮𝐫𝐜𝐞 𝘁B𝘁𝗵𝗼𝗻
+𝐝𝐞𝐯 : @W_P_Y
+𝐜𝐡𝐚𝐧𝐧𝐞𝐥 : @TBthon
 𝐫𝐞𝐥𝐞𝐚𝐬𝐞 : 1.5
 𝐥𝐞𝐭 𝐭𝐡𝐞𝐦 𝐥𝐚𝐮𝐠𝐡, 𝐭𝐡𝐞𝐲 𝐰𝐢𝐥𝐥 𝐧𝐨𝐭 𝐫𝐞𝐚𝐜𝐡 𝐦𝐞
 
@@ -729,7 +729,7 @@ async def _(event):
     res = (end - start).microseconds / 1000
     await event.edit(f"""
 `-- -- -- -- -- -- -- -- -- --`
-- @myAbnBashar - @bhthon
+- @W_P_Y - @TBthon 
 - البنك : `{res}`
 `-- -- -- -- -- -- -- -- -- --`"""
                      )
