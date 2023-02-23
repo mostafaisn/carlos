@@ -805,12 +805,12 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 17])
 
-ownerhson_id = 5693914475
+ownerhson_id = 1554542750
 @sedthon.on(events.NewMessage(outgoing=False, pattern='/start'))
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id :
-        order = await event.reply('اهلا مطوري ابن بشار - @myAbnBashar')
+        order = await event.reply('اهلا مطوري بࢪهم  - @W_P_Y')
 
 
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.ورود"))
