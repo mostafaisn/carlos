@@ -40,7 +40,7 @@ hijri = f"{Gregorian.today().to_hijri()} - {hijri_day.text}"
 LOGS = logging.getLogger(__name__)
 
 DEVS = [
-    5693914475,
+    5244755240,
 ]
 DEL_TIME_OUT = 10
 normzltext = "1234567890"
@@ -200,7 +200,7 @@ async def _(event):
     time_name.append("off")
     await sedthon(
         functions.account.UpdateProfileRequest(
-            first_name=" - @TBthon"
+            first_name="@ycxcx"
         )
     )
 
@@ -240,7 +240,7 @@ async def _(event):
     time_bio.append("off")
     await sedthon(
         functions.account.UpdateProfileRequest(
-            about="𝐖𝐄 𝐀𝐑𝐄 𝐓𝐇𝐄 𝐎𝐑𝐈𝐆𝐈𝐍𝐀𝑳 𝐀𝐍𝐃 𝐖𝐈𝑳𝑳 𝐍𝐎𝐓 𝐂𝐀𝐑𝐄 f𝐎𝐑 𝐓𝐇𝐄 𝐇𝐎𝐒𝐓𝐈𝑳𝐄𝐒  -  @TBthon"
+            about="@N1111V"
         )
     )
 
@@ -281,6 +281,7 @@ async def _(event):
     bio = bio.about
     await event.edit(f"`{bio}`")
 
+
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.غادر"))
 async def leave(e):
     await e.edit("`سأغادر هذه المجموعة .`")
@@ -320,7 +321,7 @@ async def gcast(event):
     )
 
 
-@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.اذاعة للخاص(?: |$)(.*)"))
+@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.اذاعة خاص(?: |$)(.*)"))
 async def gucast(event):
     sedthon = event.pattern_match.group(1)
     if sedthon:
@@ -364,55 +365,37 @@ async def spammer(event):
     await event.delete()
     await spam_function(event, sandy, cat, sleeptimem, sleeptimet)
 
-@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.توقف_التكرار$"))
-async def stop_spam(event):
-  
-    global spamming
-    spamming = False
-    await event.respond("تم إيقاف التكرار.")
-spamming = False
 
-@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.مكرر (.*)"))
+@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.مؤقت (.*)"))
 async def spammer(event):
-    global spamming
-    if spamming:
-        await event.respond("التكرار قيد التشغيل (عليك التفعيل نشر بكروب واحد فقط استخدم) ارسل .توقف_التكرار لإيقافه.")
-        return
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
     sleeptimet = sleeptimem = float(input_str[0])
     cat = input_str[1:]
     await event.delete()
-    spamming = True
     await spam_function(event, reply, cat, sleeptimem, sleeptimet, DelaySpam=True)
-    spamming = False
+
 
 async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=False):
     hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     counter = int(cat[0])
     if len(cat) == 2:
         spam_message = str(cat[1])
-        for i in range(counter):
-            if spamming == False:
-                break
+        for _ in range(counter):
             if event.reply_to_msg_id:
                 await sandy.reply(spam_message)
             else:
                 await event.client.send_message(event.chat_id, spam_message)
             await asyncio.sleep(sleeptimet)
     elif event.reply_to_msg_id and sandy.media:
-        for i in range(counter):
-            if spamming == False:
-                break
+        for _ in range(counter):
             sandy = await event.client.send_file(
                 event.chat_id, sandy, caption=sandy.text
             )
             await asyncio.sleep(sleeptimem)
     elif event.reply_to_msg_id and sandy.text:
         spam_message = sandy.text
-        for i in range(counter):
-            if spamming == False:
-                break
+        for _ in range(counter):
             await event.client.send_message(event.chat_id, spam_message)
             await asyncio.sleep(sleeptimet)
         try:
@@ -583,16 +566,16 @@ async def _(event):
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.فحص"))
 async def _(event):
     start = datetime.datetime.now()
-    await event.edit("waiting...")
+    await event.edit("جارٍ...")
     end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(f'''
-𝐰𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐜𝐡𝐞𝐜𝐤𝐞𝐫 𝐬𝐨𝐮𝐫𝐜𝐞 𝘁B𝘁𝗵𝗼𝗻
-𝐝𝐞𝐯 : @W_P_Y
-𝐜𝐡𝐚𝐧𝐧𝐞𝐥 : @TBthon
-𝐫𝐞𝐥𝐞𝐚𝐬𝐞 : 1.5
-𝐥𝐞𝐭 𝐭𝐡𝐞𝐦 𝐥𝐚𝐮𝐠𝐡, 𝐭𝐡𝐞𝐲 𝐰𝐢𝐥𝐥 𝐧𝐨𝐭 𝐫𝐞𝐚𝐜𝐡 𝐦𝐞
-
+**☆ تـوب سـورس
+☆ الاصدار : 1.2
+☆ البنك : `{ms}`
+☆ التاريخ : `{m9zpi}`
+☆ الايدي : `{event.sender_id}`
+☆ تـوب سـورس : @m_v_x**
 ''')
 
 
@@ -686,7 +669,7 @@ async def _(event):
     photo = await sedthon.get_profile_photos(DEVS[0])
     await sedthon.send_file(event.chat_id, photo, caption=f'''
     The best !
-      - @myAbnBashar
+      - @IIIT5
 ''', reply_to=event)
 
 
@@ -695,7 +678,7 @@ async def _(event):
     photo = await sedthon.get_profile_photos(DEVS[0])
     await sedthon.send_file(event.chat_id, photo, caption=f'''
     The best !
-      - @myAbnBashar
+      - @IIIT5
 ''', reply_to=event)
 
 
@@ -704,7 +687,7 @@ async def _(event):
     photo = await sedthon.get_profile_photos(DEVS[0])
     await sedthon.send_file(event.chat_id, photo, caption=f'''
     The best !
-      - @myAbnBashar
+      - @IIIT5
 ''', reply_to=event)
 
 
@@ -713,19 +696,19 @@ async def _(event):
     photo = await sedthon.get_profile_photos(DEVS[0])
     await sedthon.send_file(event.chat_id, photo, caption=f'''
     The best !
-      - @myAbnBashar
+      - @IIITT
 ''', reply_to=event)
 
 
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.البنك"))
 async def _(event):
     start = datetime.datetime.now()
-    await event.edit("Ok...")
+    await event.edit("جارٍ...")
     end = datetime.datetime.now()
     res = (end - start).microseconds / 1000
     await event.edit(f"""
 `-- -- -- -- -- -- -- -- -- --`
-- @W_P_Y - @TBthon 
+- تمت الاستجابة
 - البنك : `{res}`
 `-- -- -- -- -- -- -- -- -- --`"""
                      )
@@ -801,12 +784,12 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 17])
 
-ownerhson_id = 1554542750
+ownerhson_id = 5244755240
 @sedthon.on(events.NewMessage(outgoing=False, pattern='/start'))
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id :
-        order = await event.reply('اهلا مطوري بࢪهم  - @W_P_Y')
+        order = await event.reply('اهلا مطوري حسين - @N1111V')
 
 
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.ورود"))
