@@ -371,9 +371,46 @@ async def _(event):
 ✪ (@{username}) done...
 ✪ By @TBthon - @W_P_Y
     ''')
+                        @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.تثبيت تلقائي (.*)"))
+async def _(event):
+    if ispay2[0] == "yes":
+        trys = 0
+        msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
+        if msg[0] == "تثبيت تلقائي":  # تثبيت عدد يوزر قناه
+            isauto.clear()
+            isauto.append("on")
+            msg = ("".join(event.text.split(maxsplit=2)[2:])).split(" ", 2)
+            username = str(msg[2])
+            ch = str(msg[1])
+            await event.edit(f"Well I will try to install  {username} on {ch} , by number  {msg[0]} of attempts !")
+
+            @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.condition Attract"))
+            async def _(event):
+                if "on" in isauto:
+                    msg = await event.edit(f"The installation has arrived ({trys}) of attempts ")
+                elif "off" in isauto:
+                    await event.edit("installation off !")
+                else:
+                    await event.edit("mistake")
+            for i in range(int(msg[0])):
+                if ispay2[0] == 'no':
+                    break
+                t = Thread(target=lambda q, arg1: q.put(
+                    check_user(arg1)), args=(que, username))
+                t.start()
+                t.join()
+                isav = que.get()
+                if "Available" in isav:
+                    try:
+                        await sedthon(functions.channels.UpdateUsernameRequest(
+                            channel=ch, username=username))
+                        await event.client.send_message(event.chat_id, f'''
+✪ (@{username}) done...
+✪ By @TBthon - @W_P_Y
+    ''')
                         break
                     except telethon.errors.rpcerrorlist.UsernameInvalidError:
-                        await event.client.send_message(event.chat_id, f"مبند `{username}` ❌❌")
+                        await event.client.send_message(event.chat_id, f"مبند {username} ❌❌")
                         break
                     except Exception as eee:
 
@@ -391,24 +428,3 @@ async def _(event):
             isclaim.clear()
             isclaim.append("off")
             await sedthon.send_message(event.chat_id, "تم الانتهاء من التثبيت التلقائي")
-        if msg[0] == "يدوي":  # تثبيت يدوي يوزر قناة
-            await event.edit(f"حسناً سأحاول تثبيت `{username}` على `{ch}` !")
-            msg = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
-            username = str(msg[0])
-            ch = str(msg[1])
-            try:
-                await sedthon(functions.channels.UpdateUsernameRequest(
-                    channel=ch, username=username))
-                await event.client.send_message(event.chat_id, f'''
-✪ (@{username}) The catch was done 
-✪ By @TBthon - @W_P_Y
-    ''')
-            except telethon.errors.rpcerrorlist.UsernameInvalidError:
-                await event.client.send_message(event.chat_id, f"مبند `{username}` ❌❌")
-            except Exception as eee:
-                await sedthon.send_message(event.chat_id, f'''خطأ مع {username}
-    الخطأ :
-    {str(eee)}''')
-
-    else:
-        await event.edit("يجب الدفع لاستعمال هذا الامر !")
