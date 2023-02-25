@@ -281,7 +281,6 @@ async def _(event):
     bio = bio.about
     await event.edit(f"`{bio}`")
 
-
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.غادر"))
 async def leave(e):
     await e.edit("`سأغادر هذه المجموعة .`")
@@ -365,15 +364,12 @@ async def spammer(event):
     await event.delete()
     await spam_function(event, sandy, cat, sleeptimem, sleeptimet)
 
-
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.توقف_التكرار$"))
 async def stop_spam(event):
   
     global spamming
     spamming = False
     await event.respond("تم إيقاف التكرار.")
-
-
 spamming = False
 
 @sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.مكرر (.*)"))
